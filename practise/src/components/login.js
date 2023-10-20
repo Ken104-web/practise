@@ -44,12 +44,12 @@ const LoginForm = ({ setIsLoggedIn }) => {
 
   return (
     <Card>
-      <h1 className="title">Sign In</h1>
+      <h1 className="title">Tour Guide</h1>
       <p className="subtitle">
         Please log in using your username and password!
       </p>
       <form onSubmit={handleSubmit}>
-        <div className="inputs_container">
+        <div className="inputs_container" id="body">
           <input
             type="text"
             placeholder="Username"

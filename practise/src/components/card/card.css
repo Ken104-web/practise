@@ -1,11 +1,12 @@
 .card {
-    width: 550px;
     background-color: #000;
     height: 700px;
     border-radius: 1rem;
     padding: 2rem;
-    margin: 1rem;
-  }
+    margin: 0 auto;
+    width: 550px;
+        
+}
   
   @media only screen and (max-width: 620px) {
     .card {
