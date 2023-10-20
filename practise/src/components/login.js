@@ -4,6 +4,7 @@ import Card from "./card/card";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { database } from "./data/data";
 
 const LoginForm = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -32,8 +33,21 @@ const LoginForm = ({ setIsLoggedIn }) => {
       setErrorMessages({ name: "noPassword", message: errors.noPassword });
       return;
     }
+    const currentUser = database.find((user) => user.username === username);
 
-
+    if (currentUser) {
+      if (currentUser.password !== password) {
+        // Wrong password
+        setErrorMessages({ name: "password", message: errors.password });
+      } else {
+        // Correct password, log in user
+        setErrorMessages({});
+        setIsLoggedIn(true);
+      }
+    } else {
+      // Username doesn't exist in the database
+      setErrorMessages({ name: "username", message: errors.username });
+    }
   };
 
   // Render error messages
@@ -44,12 +58,12 @@ const LoginForm = ({ setIsLoggedIn }) => {
 
   return (
     <Card>
-      <h1 className="title">Tour Guide</h1>
+      <h1 className="title">Sign In</h1>
       <p className="subtitle">
         Please log in using your username and password!
       </p>
       <form onSubmit={handleSubmit}>
-        <div className="inputs_container" id="body">
+        <div className="inputs_container">
           <input
             type="text"
             placeholder="Username"
