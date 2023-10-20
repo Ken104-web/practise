@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoggedIn.css";
+import "./loggedin.css";
 
 const LoggedIn = ({ setIsLoggedIn }) => {
   return (
