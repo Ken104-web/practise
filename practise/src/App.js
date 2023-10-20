@@ -12,7 +12,6 @@ function App() {
         <>
         {isLoggedIn ? (
         <Route exact path="/" element={<LoggedIn setIsLoggedIn={setIsLoggedIn}/>}/>
-
         ) : (
         <Route exact path="/" element={<LoginForm setIsLoggedIn={setIsLoggedIn}/>}/>
         )}
